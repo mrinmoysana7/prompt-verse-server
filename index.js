@@ -34,7 +34,7 @@ async function run() {
           .toArray();
 
         res.send({
-          success: true,
+          success: true, 
           prompts,
         });
       } catch (error) {
