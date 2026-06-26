@@ -25,6 +25,26 @@ async function run() {
     const database = client.db("PromptVerse");
     const promptCollection = database.collection("prompts");
 
+    app.get("/api/prompts/featured", async (req, res) => {
+      try {
+        const prompts = await promptCollection
+          .find({})
+          .sort({ rating: -1, copyCount: -1 })
+          .limit(6)
+          .toArray();
+
+        res.send({
+          success: true,
+          prompts,
+        });
+      } catch (error) {
+        res.status(500).send({
+          success: false,
+          message: "Failed to fetch featured prompts",
+        });
+      }
+    });
+
     app.get("/api/prompts", async (req, res) => {
       try {
         const {
@@ -39,7 +59,7 @@ async function run() {
 
         const query = {};
 
-        // Search by title, description or tags
+        // Search by title, description, aiToolName or tags
         if (search) {
           query.$or = [
             {
@@ -50,6 +70,12 @@ async function run() {
             },
             {
               fullDescription: {
+                $regex: search,
+                $options: "i",
+              },
+            },
+            {
+              aiToolName: {
                 $regex: search,
                 $options: "i",
               },
