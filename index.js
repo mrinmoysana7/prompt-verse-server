@@ -34,7 +34,7 @@ async function run() {
           .toArray();
 
         res.send({
-          success: true, 
+          success: true,
           prompts,
         });
       } catch (error) {
@@ -156,6 +156,15 @@ async function run() {
           message: "Failed to fetch prompts.",
         });
       }
+    });
+
+    app.get("/api/prompts/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = {
+        _id: new ObjectId(id),
+      };
+      const result = await promptCollection.findOne(query);
+      res.send(result);
     });
 
     // await client.db("admin").command({ ping: 1 });
