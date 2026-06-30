@@ -20,7 +20,7 @@ const client = new MongoClient(uri, {
 
 async function run() {
   try {
-    await client.connect();
+    // await client.connect();
 
     const database = client.db("PromptVerse");
     const promptCollection = database.collection("prompts");
@@ -164,6 +164,16 @@ async function run() {
         _id: new ObjectId(id),
       };
       const result = await promptCollection.findOne(query);
+      res.send(result);
+    });
+
+    app.post("/api/prompts", async (req, res) => {
+      const prompt = req.body;
+      const addPrompt = {
+        ...prompt,
+        createdAt: new Date(),
+      };
+      const result = await promptCollection.insertOne(prompt);
       res.send(result);
     });
 
