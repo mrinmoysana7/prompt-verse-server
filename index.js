@@ -2020,7 +2020,7 @@ async function run() {
           message: "Failed to approve prompt.",
         });
       }
-    });
+    });  
 
     app.get("/api/admin/prompts/rejected", async (req, res) => {
       try {
