@@ -1201,7 +1201,7 @@ async function run() {
           message: "Internal Server Error.",
         });
       }
-    });
+    });   
 
     app.delete("/api/bookmarks/remove", async (req, res) => {
       try {
