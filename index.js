@@ -2741,7 +2741,7 @@ async function run() {
           message: "Failed to load payments.",
         });
       }
-    });
+    });          
 
     app.get("/api/users/top-creators", async (req, res) => {
       try { 
