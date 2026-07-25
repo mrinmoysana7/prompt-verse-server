@@ -1709,7 +1709,7 @@ async function run() {
           message: "Internal Server Error",
         });
       }
-    });
+    });  
 
     app.get("/api/creator/:userId/stats", async (req, res) => {
       try {
