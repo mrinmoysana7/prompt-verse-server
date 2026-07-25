@@ -1769,7 +1769,7 @@ async function run() {
           message: "Failed to fetch users.",
         });
       }
-    });
+    });    
 
     app.patch("/api/admin/users/:id/role", async (req, res) => {
       try {
@@ -2744,7 +2744,7 @@ async function run() {
     });
 
     app.get("/api/users/top-creators", async (req, res) => {
-      try {
+      try { 
         const creators = await userCollection
           .aggregate([
             // শুধুমাত্র Premium Creator
