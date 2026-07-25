@@ -1819,7 +1819,7 @@ async function run() {
           message: "Failed to update role.",
         });
       }
-    });
+    });  
 
     app.delete("/api/admin/users/:id", async (req, res) => {
       try {
