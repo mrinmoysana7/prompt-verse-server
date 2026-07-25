@@ -1867,7 +1867,7 @@ async function run() {
           message: "Failed to delete user.",
         });
       }
-    });
+    });   
 
     app.get("/api/admin/prompts/stats", async (req, res) => {
       try {
