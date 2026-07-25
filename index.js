@@ -2687,7 +2687,7 @@ async function run() {
           message: error.message,
         });
       }
-    });
+    });                                                                   
 
     app.get("/api/subscriptions", async (req, res) => {
       try {
