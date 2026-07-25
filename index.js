@@ -1070,7 +1070,7 @@ async function run() {
           message: "Internal Server Error.",
         });
       }
-    });
+    });        
 
     app.post("/api/bookmarks/toggle", async (req, res) => {
       try {
